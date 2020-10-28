@@ -1,0 +1,10 @@
+img {
+    border: 1px solid;
+    border-radius: 100%;
+    border-color:black;
+
+}
+.memberText{
+  font-size: smaller;
+  color: darkgray;
+}

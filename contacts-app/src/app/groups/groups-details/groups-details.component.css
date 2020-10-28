@@ -1,0 +1,10 @@
+.imgDiv{
+    height: 200;
+    width: 200px;
+    border: 1px solid;
+}
+.centered{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

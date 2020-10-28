@@ -1,0 +1,37 @@
+<div class="centered">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="imgDiv">
+                <img src={{groupService.selectedGroup.imagePath}} alt="" class="img-responsive">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="centered">
+    <div class="row">
+        <div class="col-xs-12">
+            <h1>{{groupService.selectedGroup.groupName}}</h1>
+            <div class="centered"><p>{{groupService.selectedGroup.groupDescription}}</p></div>
+        </div>
+    </div>
+</div>
+<div class="centered">
+    <div class="row">
+        <div class="col-xs-12">
+            <button class="btn btn-primary dropdown-toggle" (click)="onClickAddContactToGroup()">Add Contact</button>
+            <button class="btn btn-info" (click)="deleteContactFRomGroup()" [ngStyle]="{'margin-left': '5px'}">Delete Contact</button>
+        </div>
+    </div>
+</div>
+<div *ngIf="showAddingContacts==true">
+    <app-contact-item *ngFor="let contactEl of addContacts"
+    [contact]="contactEl"
+    (selectedID)="onAddselectedID($event)"
+    (click)=addContactToGroup()
+    ></app-contact-item>
+</div>
+<hr>
+<app-contact-item *ngFor="let contactEl of groupService.selectedGroup.members"
+[contact]="contactEl"
+></app-contact-item>
+

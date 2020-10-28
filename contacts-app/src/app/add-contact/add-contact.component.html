@@ -1,0 +1,44 @@
+<form (ngSubmit)="onClickSumbit()" [formGroup]="form">
+    <hr>
+    <div class="row">
+      <div class="col-md-2">
+        <input type="text" class="form-control" placeholder="First Name"   name="firstName" formControlName="firstName"><br>
+        <input type="text" class="form-control" placeholder="Last Name" aria-label="LastName"  name="lastName" formControlName="lastName"><br>
+      </div>
+      <div class="col-md-3" [ngStyle]="{'margin-left': '1px'}">
+        <input type="text" class="form-control" placeholder="Address" aria-label="Adress"  name="address" formControlName="address"><br>
+        <div formArrayName="telephone">
+            <div class="form-group"
+            *ngFor="let tele of telePhoneControls; let i=index">
+                <input type="text" class="form-control" placeholder="Telephone" aria-label="Telephone"  name="telephone" [formControlName]="i">
+            </div>
+        </div>
+
+        <button type="button" class="btn btn-secondary" [ngStyle]="{'margin-left': '5px'}" (click)="onClickAddTelephone()">Add Telephone</button>
+      </div>
+      <div class="col-md-3" [ngStyle]="{'margin-left': '1px'}">
+        <input type="text" class="form-control" placeholder="ImagePath" aria-label="ImagePath"  name="imgPath" formControlName="imgPath"><br>
+        <div formArrayName="phone">
+            <div class="form-group"
+            *ngFor="let phone of phoneControls; let i=index">
+                <input type="text" class="form-control" placeholder="Phone" aria-label="Phone"  name="phone" [formControlName]="i">
+            </div>
+        </div>
+
+        <button type="button" class="btn btn-secondary" [ngStyle]="{'margin-left': '5px'}" (click)="onClickAddPhone()">Add Phone</button>
+      </div>
+      <div class="col-md-3" [ngStyle]="{'margin-left': '1px'}">
+        <input type="text" class="form-control" placeholder="Website" aria-label="Website"  name="website" formControlName="website"><br>
+        <div formArrayName="email">
+            <div class="form-group"
+        *ngFor="let email of emailControls; let i=index">
+            <input type="text" class="form-control" placeholder="Mail" aria-label="Mail"  name="email" [formControlName]="i">
+        </div>
+        </div>
+
+        <button type="button" class="btn btn-secondary" [ngStyle]="{'margin-left': '5px'}" (click)="onClickAddMail()">Add Mail</button>
+      </div>
+    </div>
+    <br>
+    <input type="submit" class="btn btn-primary" [disabled]="!form.valid" value="Submit">
+</form>

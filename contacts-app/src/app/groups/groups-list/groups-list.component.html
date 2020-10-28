@@ -1,0 +1,40 @@
+<!--groups section-->
+<app-group-item 
+*ngFor="let groupEl of groups" 
+[group]="groupEl"
+></app-group-item>
+<hr>
+<div class="centered">
+    <div class="row">
+        <div class="col-xs-12" [ngStyle]="{'margin': 'auto'}">
+            <button class="btn btn-primary" (click)="onShowAddSection()">Add new group</button>
+            <button class="btn btn-danger" (click)="onShowADelSection()" [ngStyle]="{'margin-left': '5px'}">Delete group</button>
+        </div>  
+    </div>
+</div>
+<!--add section-->
+<div *ngIf="showAddSection==true">
+    <hr>
+    <div class="row">
+      <div class="col">
+        <input type="text" class="form-control" placeholder="Group Name" aria-label="Group Name" [(ngModel)]="newName"><br>
+        <input type="text" class="form-control" placeholder="Description" aria-label="Description" [(ngModel)]="newDesc"><br>
+        <input type="text" class="form-control" placeholder="Image Url" aria-label="Image Url" [(ngModel)]="newImg"><br>
+      </div>
+    </div>
+    <div class="centered">
+        <button class="btn btn-primary" (click)="onAddSumbit()" >Submit</button>
+        <button class="btn btn-secondary" (click)="onShowAddSection()" [ngStyle]="{'margin-left': '5px'}" >Cancel</button>
+    </div>
+</div>
+<!--delete section-->
+<div *ngIf="showDelSection==true">
+    <hr>
+    <div>
+    <h4 [ngStyle]="{'text-align': 'center'}"> Are you sure you want to delete <strong>{{this.groupService.selectedGroup.groupName}}</strong>?</h4>
+    <div class="centered">
+      <button class="btn btn-primary" (click)="onDelYes()">Yes</button>
+      <button class="btn btn-danger" (click)="onShowADelSection()" [ngStyle]="{'margin-left': '5px'}">No </button>
+    </div>
+    </div>
+  </div>

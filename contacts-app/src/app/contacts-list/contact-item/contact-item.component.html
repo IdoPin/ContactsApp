@@ -1,0 +1,40 @@
+<a
+class="list-group-item clearfix"
+(click)="onSelected()">
+<div class="pull-left">
+    <h4 class="list-group-item-heading">{{contact.firstName+' '+contact.lastName}}</h4>
+    <p class="list-group-item-text">{{contact.phones[0]}}</p>
+</div>
+<span class="pull-right">
+    <img
+    src="{{contact.imagePath}}"
+    alt="{{contact.firstName+' '+contact.lastName}}"
+    class="img-responsive"
+    style="max-height: 50px;">
+</span>
+</a>
+<div class="container"
+*ngIf="detailsStatus == true"
+[ngStyle]="{'background-color': 'AliceBlue'}">
+    <div class="row">
+        <div class="col-md-3">
+            <h4>Details:</h4>
+            <h5>Name: {{contact.firstName+' '+contact.lastName}}</h5>
+            <h5>Address: {{contact.address}}</h5>
+            <h5>Website: {{contact.website}}</h5>
+        </div>
+        <div class="col-md-3">
+            <h4>Phones:</h4>
+            <h5 *ngFor="let phone of contact.phones">{{phone}}</h5>
+        </div>
+        <div class="col-md-3">
+            <h4>Telephones:</h4>
+            <h5 *ngFor="let tele of contact.telephones">{{tele}}</h5>
+        </div>
+        <div class="col-md-3">
+            <h4>Mails:</h4>
+            <h5 *ngFor="let mail of contact.mails">{{mail}}</h5>
+        </div>
+    </div>
+</div>
+

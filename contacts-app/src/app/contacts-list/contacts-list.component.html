@@ -1,0 +1,33 @@
+<app-header></app-header>
+<div class="row">
+    <div class="col-xs-12">
+      <button class="btn btn-primary" (click)="onClickNewContact()">New Contact</button>
+      <button class="btn btn-info" (click)="onClickEditContact()"[ngStyle]="{'margin-left': '5px'}">Edit Contact</button>
+      <button class="btn btn-danger" (click)="onClickDelContact()" [ngStyle]="{'margin-left': '5px'}">Delete Contact</button>
+      <!-- New Contact Section -->
+      <app-add-contact (hideAddSec)='onClickNewContact($event)' *ngIf="showCreateSection"></app-add-contact>
+      <!-- Edit Section -->
+      <app-edit-contact (hideEditSec)='onClickEditContact($event)' *ngIf="showEditSection == true"></app-edit-contact>
+
+      <!-- Delete Section -->
+      <div *ngIf="showDeleteSection == true">
+        <hr>
+        <div>
+        <h4 [ngStyle]="{'text-align': 'center'}"> Are you sure you want to delete <strong>{{this.contactsService.selectedContact.firstName+" "+this.contactsService.selectedContact.lastName}}</strong>?</h4>
+        <div class="centered">
+          <button class="btn btn-primary" (click)="onClickDelYes()">Yes</button>
+          <button class="btn btn-danger" [ngStyle]="{'margin-left': '5px'}" (click)="onClickDelNo()">No </button>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-xs-12">
+      <app-contact-item *ngFor="let contactEle of contacts"
+      [contact]="contactEle"
+      ></app-contact-item>
+    </div>
+  </div>
+  
